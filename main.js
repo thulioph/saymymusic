@@ -11,8 +11,8 @@
 	const stop = document.getElementById('stop-button');
 
 	let SpeechRecognition = window.SpeechRecognition ||
-														window.webkitSpeechRecognition ||
-														null;
+													window.webkitSpeechRecognition ||
+													null;
 
 	let recognizer = null;
 
@@ -129,6 +129,8 @@
 			recognizer.stop();
 		}
 	};
+
+	// ====
 
 	APP.init();
 
