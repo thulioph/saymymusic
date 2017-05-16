@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<title>Say my Music</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
+
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		.is-hide {
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<main class="section">
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">Say my Music</h1>
+        <h2 class="subtitle">
+          Search the lyrics of your favorite music.
+        </h2>
+      </div>
+
+      <hr>
+
+			<div class="columns">
+				<aside class="column">
+					<form>
+						<div class="field">
+						  <label class="label">Language:</label>
+
+						  <p class="control">
+						    <span class="select">
+						      <select id="language-select">
+						        <option value="en-US">English</option>
+						        <option value="pt-BR">Portuguese</option>
+						      </select>
+						    </span>
+						  </p>
+						</div>
+
+						<div class="field">
+							<label class="label">Opções de gravação:</label>
+
+							<p class="control">
+								<label class="radio">
+									<input type="radio" name="options" value="infinit">
+									continua
+								</label>
+
+								<label class="radio">
+									<input type="radio" name="options" value="once">
+									apenas uma vez
+								</label>
+							</p>
+						</div>
+
+						<div class="columns">
+							<aside class="column">
+								<div class="field">
+									<label class="label">Transcription:</label>
+									<p class="control">
+										<textarea
+											class="textarea"
+											id="transcription-area"
+											placeholder="Transcription logs"
+											readonly>
+										</textarea>
+									</p>
+								</div>
+							</aside>
+
+							<aside class="column">
+								<div class="field">
+									<label class="label">Logs:</label>
+									<p class="control">
+										<textarea
+											class="textarea"
+											id="logs-area"
+											placeholder="Application logs"
+											readonly>
+										</textarea>
+									</p>
+								</div>
+							</aside>
+						</div>
+
+						<div class="columns">
+							<div class="column">
+								<button id="play-button" class="button is-primary">Play</button>
+								<button id="stop-button" class="button is-danger">Stop</button>
+							</div>
+						</div>
+
+						<div id="notification" class="notification is-primary is-hide">
+							Fala que eu te escuto..
+						</div>
+					</form>
+				</aside>
+			</div>
+		</div>
+	</main>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
