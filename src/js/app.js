@@ -7,7 +7,7 @@
 		tooltip: 'Say my music.',
 		icon: 'src/images/IconTemplate.png',
 		width: 300,
-		height: 300,
+		height: 500,
 		resizable: false,
 		showDockIcon: true,
 		alwaysOnTop: false,
@@ -18,16 +18,16 @@
 
 	// ====
 
-	menuBar.on('ready', (evt) => {
-		console.log('app is ready', evt);
+	menuBar.on('ready', () => {
+		console.log('app is ready');
 	});
 
-	menuBar.on('show', (evt) => {
-		console.log('App is show', evt);
+	menuBar.on('show', () => {
+		console.log('App is show');
 	});
 
-	menuBar.on('hide', (evt) => {
-		console.log('App is hide', evt);
+	menuBar.on('hide', () => {
+		console.log('App is hide');
 	});
 
 })();
