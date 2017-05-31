@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio API</title>
+</head>
+<body>
+
+	<canvas id="analyser"></canvas>
+
+	<!-- Criando o áudio -->
+	<script>
+		const audio = new Audio();
+
+		audio.src = './assets/Haikaiss - RAP LORD (VIDEOCLIPE OFICIAL).mp3';
+
+		audio.loop = true;
+		audio.controls = true;
+		audio.autoplay = true;
+
+		audio.crossOrigin = 'anonymous';
+
+		// ====
+
+		let audioCtx, source, analyser, fbc_array;
+
+		CreateAudioCtx = () => {
+			audioCtx = new window.AudioContext();
+
+			source = audioCtx.createMediaElementSource(audio);
+			analyser = audioCtx.createAnalyser();
+			fbc_array = new Uint8Array(analyser.frequencyBinCount);
+
+			source.connect(analyser);
+			analyser.connect(audioCtx.destination);
+		};
+
+		// ====
+
+		let canvas, canvasCtx, bars, bar_x, bar_width, bar_height;
+
+		CreateCanvas = () => {
+			canvas = document.getElementById('analyser');
+	    canvasCtx = canvas.getContext('2d');
+		};
+
+		DefineSizesCanvas = () => {
+			canvas.width = window.innerWidth;
+	    canvas.height = window.innerHeight;
+		};
+
+		Render = () => {
+			canvasCtx.clearRect(10, 10, canvas.width, canvas.height);
+	    canvasCtx.fillStyle = '#363636';
+	    bars = 120;
+
+	    for (let i = 0; i < bars; i++) {
+	    	bar_width = canvas.width / bars;
+	    	bar_x = i * (bar_width + 5);
+	    	bar_height = -(fbc_array[i]);
+	    	canvasCtx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+	    }
+		};
+
+		FrameLooper = () => {
+			window.requestAnimationFrame(FrameLooper);
+			analyser.getByteFrequencyData(fbc_array);
+
+			Render();
+		};
+
+		Init = () => {
+			CreateAudioCtx();
+			CreateCanvas();
+			DefineSizesCanvas();
+			FrameLooper();
+		};
+
+		// ====
+
+		window.addEventListener('load', Init, false);
+		window.addEventListener('resize', DefineSizesCanvas, false);
+	</script>
+</body>
+</html>

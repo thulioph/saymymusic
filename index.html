@@ -16,6 +16,10 @@
 		.is-hide {
 			visibility: hidden;
 		}
+
+		.wrapper-analyser {
+			overflow: hidden;
+		}
 	</style>
 </head>
 <body>
@@ -77,7 +81,7 @@
 								</div>
 							</aside>
 
-							<aside class="column">
+							<!-- <aside class="column">
 								<div class="field">
 									<label class="label">Logs:</label>
 									<p class="control">
@@ -89,7 +93,7 @@
 										</textarea>
 									</p>
 								</div>
-							</aside>
+							</aside> -->
 						</div>
 
 						<div class="columns">
@@ -106,10 +110,19 @@
 				</aside>
 			</div>
 		</div>
+
+		<div class="container">
+      <div class="columns">
+      	<div class="column wrapper-analyser">
+      		<canvas id="analyser"></canvas>
+      	</div>
+      </div>
+		</div>
 	</main>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="main.js"></script>
-	<script src="audio.js"></script>
+
+	<script src="./src/js/main.js"></script>
+	<script src="./src/js/audio.js"></script>
 </body>
 </html>
