@@ -1,10 +1,12 @@
-// (function(window) {
+(function(window) {
 	'use strict';
 
 		let audio, audioCtx, source, analyser, fbc_array, canvas, canvasCtx, bars, bar_x, bar_width, bar_height;
 
 		function Init() {
 			InitAudio();
+			// GetUserAudio();
+
 			CreateAudioCtx();
 
 			CreateCanvas();
@@ -25,6 +27,27 @@
 			audio.autoplay = true;
 
 			audio.crossOrigin = 'anonymous';
+		}
+
+		function GetUserAudio() {
+			let constraints = window.constraints = {
+				audio: true,
+				video: false
+			};
+
+			navigator.mediaDevices.getUserMedia(constraints)
+				.then((stream) => {
+					audio.srcObject = stream.getAudioTracks();
+				})
+				.catch((err) => {
+					console.info(err);
+				});
+
+			// window.navigator.getUserMedia({audio: true}, (audio) => {
+			// 	console.warn(audio);
+			// }, (err) => {
+			// 	console.info(err);
+			// });
 		}
 
 		// ====
@@ -76,4 +99,4 @@
 
 		window.addEventListener('load', Init, false);
 		window.addEventListener('resize', DefineSizesCanvas, false);
-// })(window);
+})(window);
